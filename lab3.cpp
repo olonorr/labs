@@ -7,8 +7,19 @@
 using namespace std;
 
 bool isPointInFigure(double x, double y) {
-    if (x > 2 || y > 2 || y < -1 || x < -1) return false;
-    if (x > 0 && y < 1) return false;
+    if (x*x + y*y > 2) { // Общий
+        return false;
+    }
+    if (y > 0) { // Верхний вырез
+        if (x*x + y*y < 1) {
+            return false;
+        }
+    }
+    if (y < 0) { // Нижний вырез
+        if (x*x + y*y > 1) {
+            return false;
+        }
+    }
     return true;
 }
 
